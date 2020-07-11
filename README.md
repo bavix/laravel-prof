@@ -22,6 +22,35 @@ and other analytical systems.
 * **PHP Version**: 7.2+ 
 * **[Composer](https://getcomposer.org/):** `composer require bavix/laravel-prof`
 
+### Usage
+Add `profile_logs` table to clickhouse...
+
+```sql
+create table profile_logs
+(
+    hostname   String,
+    project    String,
+    version    String,
+    requestId  String,
+    requestIp  String,
+    eventName  String,
+    target     String,
+    latency    Float32,
+    memoryPeak Int32,
+    date       Date,
+    created    DateTime
+)
+    engine = MergeTree(date, (date, project, eventName), 8192);
+```
+
+Run the consumer
+```bash
+./artisan queue:work
+```
+
+Set up grafana / redash and enjoy.
+![Screenshot from 2020-07-11 14-45-55](https://user-images.githubusercontent.com/5111255/87223389-41c94e80-c385-11ea-9ce0-a36643f5fb5c.png)
+
 ---
 Supported by
 
