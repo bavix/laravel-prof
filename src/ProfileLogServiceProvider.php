@@ -41,7 +41,7 @@ class ProfileLogServiceProvider extends ServiceProvider
     {
         return !$this->app->runningInConsole() && !$this->app['request']->is(
                 \array_merge([
-                    \config('telescope.path') . '*',
+                    \config('telescope.path', 'telescope') . '*',
                     'telescope-api*',
                     'vendor/telescope*',
                     'horizon*',
