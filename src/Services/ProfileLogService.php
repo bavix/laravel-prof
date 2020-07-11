@@ -30,6 +30,11 @@ class ProfileLogService
     protected $version;
 
     /**
+     * @var int|string|null
+     */
+    protected $userId;
+
+    /**
      * @var float[]
      */
     protected $ticks = [];
@@ -43,6 +48,7 @@ class ProfileLogService
         $this->clientIp = \request()->getClientIp();
         $this->version = \app()->version();
         $this->hostname = \gethostname();
+        $this->userId = Auth::id();
     }
 
     /**
@@ -69,7 +75,6 @@ class ProfileLogService
             'hostname' => $this->hostname,
             'project' => \env('APP_NAME'),
             'version' => $this->version,
-            'userId' => Auth::id(),
             'sessionId' => \session()->getId(),
             'requestId' => $this->requestId,
             'requestIp' => $this->clientIp,
@@ -80,6 +85,10 @@ class ProfileLogService
             'date' => $currentTime,
             'created' => $currentTime,
         ]);
+
+        if ($this->userId !== null) {
+            $entry->userId = $this->userId;
+        }
 
         // save via queue if enabled
         $entry->save();
