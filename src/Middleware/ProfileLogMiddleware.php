@@ -40,7 +40,7 @@ class ProfileLogMiddleware
         }
 
         if (!$routeName) {
-            $routeName = 'app:' . \str_replace('/', ':', $route->uri);
+            $routeName = 'app:' . \str_replace('/', ':', $request->route()->uri);
         }
 
         return $routeName;
