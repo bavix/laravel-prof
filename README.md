@@ -49,6 +49,7 @@ Run the consumer
 ```
 
 Set up grafana / redash and enjoy.
+
 ![Screenshot from 2020-07-11 14-45-55](https://user-images.githubusercontent.com/5111255/87223389-41c94e80-c385-11ea-9ce0-a36643f5fb5c.png)
 
 ---
