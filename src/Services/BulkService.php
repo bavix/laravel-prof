@@ -39,7 +39,7 @@ class BulkService
      */
     public function insert(Entry $entry): int
     {
-        return Redis::rpush($this->writeKey($entry), $entry->toArray());
+        return Redis::rpush($this->writeKey($entry), \json_encode($entry->toArray()));
     }
 
     /**

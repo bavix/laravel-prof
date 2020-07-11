@@ -37,6 +37,10 @@ class BulkWrite extends Command
                 ->chunkIterator($batchSize, $key);
 
             foreach ($chunkIterator as $bulkData) {
+                foreach ($bulkData as $itemKey => $itemValue) {
+                    $bulkData[$itemKey] = \json_decode($itemValue, true);
+                }
+
                 $queueName = \config('prof.queueName', 'default');
                 $job = new BulkWriter(new $class, $bulkData);
                 $job->onQueue($queueName);
