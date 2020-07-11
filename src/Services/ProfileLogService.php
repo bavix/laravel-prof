@@ -75,6 +75,7 @@ class ProfileLogService
             'hostname' => $this->hostname,
             'project' => \env('APP_NAME'),
             'version' => $this->version,
+            'userId' => $this->userId ?: raw('NULL'),
             'sessionId' => \session()->getId(),
             'requestId' => $this->requestId,
             'requestIp' => $this->clientIp,
@@ -85,10 +86,6 @@ class ProfileLogService
             'date' => $currentTime,
             'created' => $currentTime,
         ]);
-
-        if ($this->userId !== null) {
-            $entry->userId = $this->userId;
-        }
 
         // save via queue if enabled
         $entry->save();
