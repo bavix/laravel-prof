@@ -73,7 +73,7 @@ class ProfileLogService
         $entry = new ProfileLogEntry();
         $entry->fill([
             'hostname' => $this->hostname,
-            'project' => \env('APP_NAME'),
+            'project' => \config('app.name', 'bavix/laravel-prof'),
             'version' => $this->version,
             'userId' => $this->userId,
             'sessionId' => \session()->getId(),
