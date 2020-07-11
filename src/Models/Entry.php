@@ -14,7 +14,7 @@ abstract class Entry extends Model
     public function save(array $options = []): bool
     {
         if (\config('prof.saveViaQueue', false)) {
-            $queueName = \config('prof.queueName', 'prof');
+            $queueName = \config('prof.queueName', 'default');
             $job = new BulkWriter($this);
             $job->onQueue($queueName);
             \dispatch($job);
