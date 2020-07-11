@@ -1,0 +1,28 @@
+# Laravel Prof
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bavix/laravel-prof/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bavix/laravel-prof/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/bavix/laravel-prof/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/bavix/laravel-prof/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/bavix/laravel-prof/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bavix/laravel-prof/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/bavix/laravel-prof/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+
+[![Package Rank](https://phppackages.org/p/bavix/laravel-prof/badge/rank.svg)](https://packagist.org/packages/bavix/laravel-prof)
+[![Latest Stable Version](https://poser.pugx.org/bavix/laravel-prof/v/stable)](https://packagist.org/packages/bavix/laravel-prof)
+[![Latest Unstable Version](https://poser.pugx.org/bavix/laravel-prof/v/unstable)](https://packagist.org/packages/bavix/laravel-prof)
+[![License](https://poser.pugx.org/bavix/laravel-prof/license)](https://packagist.org/packages/bavix/laravel-prof)
+[![composer.lock](https://poser.pugx.org/bavix/laravel-prof/composerlock)](https://packagist.org/packages/bavix/laravel-prof)
+
+Laravel Prof - Code profiling made easy in production. 
+Mark code snippets using services and see profiling results in `grafana`, `redash` 
+and other analytical systems.
+
+* **Vendor**: bavix
+* **Package**: Laravel Prof
+* **Version**: [![Latest Stable Version](https://poser.pugx.org/bavix/laravel-prof/v/stable)](https://packagist.org/packages/bavix/laravel-prof)
+* **Laravel Version**: `6.0`, `7.0`
+* **PHP Version**: 7.2+ 
+* **[Composer](https://getcomposer.org/):** `composer require bavix/laravel-prof`
+
+---
+Supported by
+
+[![Supported by JetBrains](https://cdn.rawgit.com/bavix/development-through/46475b4b/jetbrains.svg)](https://www.jetbrains.com/)
