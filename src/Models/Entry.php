@@ -17,6 +17,12 @@ abstract class Entry extends Model
             return \app(BulkService::class)->insert($this);
         }
 
+        foreach ($this->getAttributes() as $column => $value) {
+            if ($value === null) {
+                $this->$column = raw('NULL');
+            }
+        }
+
         return parent::save($options);
     }
 
