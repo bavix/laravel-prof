@@ -29,4 +29,12 @@ class ProfileLogEntry extends Entry
         'created',
     ];
 
+    /**
+     * @var string[]
+     */
+    protected $casts = [
+        'date' => 'date:Y-m-d',
+        'created' => 'datetime:Y-m-d H:i:s',
+    ];
+
 }
