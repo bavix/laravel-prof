@@ -34,13 +34,9 @@ class ProfileLogMiddleware
      */
     protected function routeAction(Request $request): string
     {
-        $routeName = Route::currentRouteAction();
+        $routeName = Route::currentRouteName() ?? Route::currentRouteAction();
         if (!$routeName) {
-            $route = $request->route();
-            $routeName = $route->action['as'] ?? null;
-            if (!$routeName) {
-                $routeName = 'app:' . \str_replace('/', ':', $route->uri);
-            }
+            $routeName = 'app:' . \str_replace('/', ':', $route->uri);
         }
 
         return $routeName;
