@@ -17,6 +17,7 @@ class ProfileLogEntry extends Entry
         'hostname',
         'project',
         'version',
+        'userId',
         'sessionId',
         'requestId',
         'requestIp',

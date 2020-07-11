@@ -31,6 +31,7 @@ create table profile_logs
     hostname   String,
     project    String,
     version    String,
+    userId     Nullable(String),
     sessionId  Nullable(String),
     requestId  String,
     requestIp  String,

@@ -3,6 +3,7 @@
 namespace Bavix\Prof\Services;
 
 use Bavix\Prof\Models\ProfileLogEntry;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class ProfileLogService
@@ -68,6 +69,7 @@ class ProfileLogService
             'hostname' => $this->hostname,
             'project' => \env('APP_NAME'),
             'version' => $this->version,
+            'userId' => Auth::id(),
             'sessionId' => \session()->getId(),
             'requestId' => $this->requestId,
             'requestIp' => $this->clientIp,
