@@ -40,7 +40,7 @@ class BulkWriter implements ShouldQueue
         $data = $this->model->toArray();
         foreach ($data as $column => $value) {
             if ($value === null) {
-                $data[$column] = raw($value);
+                $data[$column] = raw('NULL');
             }
         }
 
