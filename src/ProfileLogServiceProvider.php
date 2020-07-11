@@ -18,18 +18,24 @@ class ProfileLogServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([BulkWrite::class]);
+        if (!$this->app->runningInConsole()) {
             return;
         }
 
-        $this->mergeConfigFrom(\dirname(__DIR__) . '/config/config.php', 'prof');
+        $this->commands([BulkWrite::class]);
         if (function_exists('config_path')) {
             $this->publishes([
                 dirname(__DIR__) . '/config/config.php' => config_path('prof.php'),
             ], 'laravel-prof-config');
         }
+    }
 
+    /**
+     *
+     */
+    public function register(): void
+    {
+        $this->mergeConfigFrom(\dirname(__DIR__) . '/config/config.php', 'prof');
         $this->app->singleton(ProfileLogMiddleware::class);
         $this->app->singleton(ProfileLogService::class);
         $this->app->singleton(BulkService::class);
