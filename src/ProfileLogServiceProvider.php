@@ -40,6 +40,7 @@ class ProfileLogServiceProvider extends ServiceProvider
             $kernel->pushMiddleware(TerminateMiddleware::class);
         }
     }
+
     /**
      * @see https://github.com/laravel/telescope/blob/3.x/src/Telescope.php#L187-L198
      */
