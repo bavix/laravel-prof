@@ -21,6 +21,12 @@ class ProfileLogServiceProvider extends ServiceProvider
         }
 
         $this->mergeConfigFrom(\dirname(__DIR__) . '/config/config.php', 'prof');
+        if (function_exists('config_path')) {
+            $this->publishes([
+                dirname(__DIR__) . '/config/config.php' => config_path('prof.php'),
+            ], 'laravel-prof-config');
+        }
+
         $this->app->singleton(ProfileLogMiddleware::class);
         $this->app->singleton(ProfileLogService::class);
 
