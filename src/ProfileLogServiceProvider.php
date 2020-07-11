@@ -19,6 +19,7 @@ class ProfileLogServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
+            $this->commands([BulkWrite::class]);
             return;
         }
 
@@ -29,7 +30,6 @@ class ProfileLogServiceProvider extends ServiceProvider
             ], 'laravel-prof-config');
         }
 
-        $this->commands([BulkWrite::class]);
         $this->app->singleton(ProfileLogMiddleware::class);
         $this->app->singleton(ProfileLogService::class);
         $this->app->singleton(BulkService::class);

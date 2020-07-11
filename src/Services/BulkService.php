@@ -15,6 +15,11 @@ class BulkService
      */
     public function chunkIterator(int $batchSize, string $key): \Generator
     {
+        $start = \strpos($key, $this->prefixKey());
+        if ($start !== false) {
+            $key = \substr($key, $start);
+        }
+
         do {
             $bulk = Redis::lrange($key, 0, $batchSize);
             $count = \count($bulk);
@@ -22,7 +27,7 @@ class BulkService
                 yield $bulk;
                 Redis::ltrim($key, $count, -1);
             }
-        } while ($count < $batchSize);
+        } while ($count >= $batchSize);
     }
 
     /**

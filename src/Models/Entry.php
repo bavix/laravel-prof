@@ -13,12 +13,6 @@ abstract class Entry extends Model
      */
     public function save(array $options = []): bool
     {
-        foreach ($this->getAttributes() as $column => $value) {
-            if ($value === null) {
-                $this->$column = raw('NULL');
-            }
-        }
-
         if (\config('prof.saveViaQueue', false)) {
             return \app(BulkService::class)->insert($this);
         }

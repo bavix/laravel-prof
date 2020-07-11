@@ -49,6 +49,10 @@ class BulkWriter implements ShouldQueue
     public function handle(): void
     {
         if ($this->data) {
+            \array_walk_recursive($this->data, static function (&$value) {
+                $value = $value ?? raw('NULL');
+            });
+
             $this->entry::insert($this->data);
         }
     }
