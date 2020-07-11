@@ -37,7 +37,14 @@ class BulkWriter implements ShouldQueue
      */
     public function handle(): void
     {
-        $this->model::insert($this->model->toArray());
+        $data = $this->model->toArray();
+        foreach ($data as $column => $value) {
+            if ($value === null) {
+                $data[$column] = raw($value);
+            }
+        }
+
+        $this->model::insert($data);
     }
 
 }

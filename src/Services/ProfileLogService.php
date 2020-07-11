@@ -75,7 +75,7 @@ class ProfileLogService
             'hostname' => $this->hostname,
             'project' => \env('APP_NAME'),
             'version' => $this->version,
-            'userId' => $this->userId ?: raw('NULL'),
+            'userId' => $this->userId,
             'sessionId' => \session()->getId(),
             'requestId' => $this->requestId,
             'requestIp' => $this->clientIp,
