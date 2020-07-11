@@ -3,7 +3,7 @@
 namespace Bavix\Prof\Models;
 
 use Bavix\LaravelClickHouse\Database\Eloquent\Model;
-use Bavix\Prof\Jobs\BulkWriter;
+use Bavix\Prof\Services\BulkService;
 
 abstract class Entry extends Model
 {
@@ -13,12 +13,14 @@ abstract class Entry extends Model
      */
     public function save(array $options = []): bool
     {
+        foreach ($this->getAttributes() as $column => $value) {
+            if ($value === null) {
+                $this->$column = raw('NULL');
+            }
+        }
+
         if (\config('prof.saveViaQueue', false)) {
-            $queueName = \config('prof.queueName', 'default');
-            $job = new BulkWriter($this);
-            $job->onQueue($queueName);
-            \dispatch($job);
-            return true;
+            return \app(BulkService::class)->insert($this);
         }
 
         return parent::save($options);

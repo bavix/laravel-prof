@@ -2,8 +2,10 @@
 
 namespace Bavix\Prof;
 
+use Bavix\Prof\Commands\BulkWrite;
 use Bavix\Prof\Middleware\ProfileLogMiddleware;
 use Bavix\Prof\Middleware\TerminateMiddleware;
+use Bavix\Prof\Services\BulkService;
 use Bavix\Prof\Services\ProfileLogService;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
@@ -27,8 +29,10 @@ class ProfileLogServiceProvider extends ServiceProvider
             ], 'laravel-prof-config');
         }
 
+        $this->commands([BulkWrite::class]);
         $this->app->singleton(ProfileLogMiddleware::class);
         $this->app->singleton(ProfileLogService::class);
+        $this->app->singleton(BulkService::class);
 
         /**
          * @var \Illuminate\Foundation\Http\Kernel $kernel

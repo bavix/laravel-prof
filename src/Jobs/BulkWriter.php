@@ -2,7 +2,7 @@
 
 namespace Bavix\Prof\Jobs;
 
-use Bavix\LaravelClickHouse\Database\Eloquent\Model;
+use Bavix\Prof\Models\Entry;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -15,19 +15,30 @@ class BulkWriter implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
-     * @var Model
+     * @var Entry
      */
-    protected $model;
+    protected $entry;
+
+    /**
+     * @var array[]
+     */
+    protected $data;
 
     /**
      * Create a new job instance.
      *
-     * @param Model $model
+     * @param Entry $model
+     * @param array[] $data
      * @return void
      */
-    public function __construct(Model $model)
+    public function __construct(Entry $model, ?array $data = null)
     {
-        $this->model = $model;
+        if ($data === null) {
+            $data = $model->toArray();
+        }
+
+        $this->entry = $model;
+        $this->data = $data;
     }
 
     /**
@@ -37,14 +48,9 @@ class BulkWriter implements ShouldQueue
      */
     public function handle(): void
     {
-        $data = $this->model->toArray();
-        foreach ($data as $column => $value) {
-            if ($value === null) {
-                $data[$column] = raw($value);
-            }
+        if ($this->data) {
+            $this->entry::insert($this->data);
         }
-
-        $this->model::insert($data);
     }
 
 }
