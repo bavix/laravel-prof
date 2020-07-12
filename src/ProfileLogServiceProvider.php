@@ -2,13 +2,11 @@
 
 namespace Bavix\Prof;
 
-use Bavix\Prof\Commands\BulkWrite;
 use Bavix\Prof\Middleware\ProfileLogMiddleware;
 use Bavix\Prof\Middleware\TerminateMiddleware;
-use Bavix\Prof\Services\BulkService;
 use Bavix\Prof\Services\ProfileLogService;
-use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Http\Kernel;
 
 class ProfileLogServiceProvider extends ServiceProvider
 {
@@ -22,7 +20,6 @@ class ProfileLogServiceProvider extends ServiceProvider
             return;
         }
 
-        $this->commands([BulkWrite::class]);
         if (function_exists('config_path')) {
             $this->publishes([
                 dirname(__DIR__) . '/config/config.php' => config_path('prof.php'),
@@ -38,7 +35,6 @@ class ProfileLogServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(\dirname(__DIR__) . '/config/config.php', 'prof');
         $this->app->singleton(ProfileLogMiddleware::class);
         $this->app->singleton(ProfileLogService::class);
-        $this->app->singleton(BulkService::class);
 
         /**
          * @var \Illuminate\Foundation\Http\Kernel $kernel

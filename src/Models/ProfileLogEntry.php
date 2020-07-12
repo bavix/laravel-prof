@@ -2,6 +2,8 @@
 
 namespace Bavix\Prof\Models;
 
+use Bavix\Entry\Models\Entry;
+
 class ProfileLogEntry extends Entry
 {
 

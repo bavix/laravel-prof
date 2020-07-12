@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "01eecdecfc04cdddd96eff4621e9cbdc",
+    "content-hash": "8d77b495a706b690b9b985f7e85c894d",
     "packages": [
         {
             "name": "bavix/laravel-clickhouse",
@@ -55,6 +55,68 @@
                 "laravel"
             ],
             "time": "2020-07-09T19:25:58+00:00"
+        },
+        {
+            "name": "bavix/laravel-entry",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bavix/laravel-entry.git",
+                "reference": "d7202ccd10093870dbc8c29c853368fd2e3005c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bavix/laravel-entry/zipball/d7202ccd10093870dbc8c29c853368fd2e3005c2",
+                "reference": "d7202ccd10093870dbc8c29c853368fd2e3005c2",
+                "shasum": ""
+            },
+            "require": {
+                "bavix/laravel-clickhouse": "^1.0",
+                "ext-json": "*",
+                "laravel/framework": "^6.0|^7.0",
+                "php": ">=7.2",
+                "predis/predis": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bavix\\Entry\\EntryServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bavix\\Entry\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Babichev Maxim",
+                    "email": "info@babichev.net"
+                }
+            ],
+            "description": "Highly loaded ClickHouse entry for Laravel",
+            "keywords": [
+                "AMQP",
+                "analytics",
+                "clickhouse",
+                "code",
+                "eloquent",
+                "entry",
+                "grafana",
+                "laravel",
+                "model",
+                "php",
+                "redash",
+                "redis",
+                "write"
+            ],
+            "time": "2020-07-11T23:16:07+00:00"
         },
         {
             "name": "brick/math",
@@ -4159,7 +4221,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2"
+        "php": ">=7.2",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
