@@ -1,3 +1,5 @@
+![Screenshot from 2020-07-12 11-56-41](https://user-images.githubusercontent.com/5111255/87242600-e5266c00-c436-11ea-8c99-da9181d929ad.png)
+
 # Laravel Prof
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bavix/laravel-prof/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bavix/laravel-prof/?branch=master)
