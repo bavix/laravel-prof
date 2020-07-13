@@ -83,8 +83,8 @@ class ProfileLogService
             'target' => $target,
             'latency' => $currentTime - $tickTime,
             'memoryPeak' => \memory_get_usage(true),
-            'date' => $currentTime,
-            'created' => $currentTime,
+            'date' => $tickTime,
+            'created' => $tickTime,
         ]);
 
         // save via queue if enabled
